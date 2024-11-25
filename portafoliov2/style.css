@@ -1,0 +1,505 @@
+/* ===============================
+   Estilos Generales
+   =============================== */
+
+/* Importar fuente Perpetua desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Perpetua&display=swap');
+
+/* Estilos globales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Perpetua', serif;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* ===============================
+   Estilos de la Barra de Navegación
+   =============================== */
+.navbar {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 8px;
+    z-index: 1000;
+}
+
+.navbar ul {
+    list-style-type: none;
+}
+
+.navbar ul li {
+    margin: 5px 0;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* ===============================
+   Estilos de las Secciones
+   =============================== */
+.section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2em;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ===============================
+   Estilos Específicos para la Sección 1
+   =============================== */
+#section1 {
+    position: relative;
+}
+
+.image-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    animation: slideIn 1s ease-out;
+}
+
+.image {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    opacity: 0; /* Comienza invisible */
+    animation: slideIn 1s ease-out forwards;
+}
+
+/* Animación de carga de izquierda a derecha */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Efectos de hover */
+.image:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para las imágenes específicas */
+.image1 {
+    background-image: url('img/1.png');
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%);
+    animation-delay: 0s;
+}
+
+.image2 {
+    background-image: url('img/2.png');
+    animation-delay: 0.5s;
+    position: relative;
+}
+
+.image3 {
+    background-image: url('img/3.png');
+    clip-path: polygon(0 0, 85% 0, 100% 100%, 0 100%);
+    animation-delay: 1s;
+}
+
+/* Superposición de la nueva imagen */
+.overlay {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.image2 .new-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    background-image: url('img/4.png');
+    background-size: cover;
+    background-position: center;
+    animation: expandAndRotate 7s ease-in-out forwards, fadeOut 3s ease-in-out 5s;
+}
+
+/* Animación de expansión y rotación */
+@keyframes expandAndRotate {
+    0% {
+        width: 0;
+        height: 0;
+        transform: scale(0);
+    }
+    50% {
+        width: 100%;
+        height: 100%;
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1) rotate(360deg);
+    }
+}
+
+/* Animación para desaparecer */
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* ===============================
+   Estilos para los textos en las imágenes
+   =============================== */
+.text-left, .text-middle, .text-right {
+    position: absolute;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.text-left {
+    padding-right: 100px;
+}
+
+.text-right {
+    padding-left: 100px;
+}
+
+.text-middle {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: slideUp 1s ease-out forwards 5s;
+}
+
+.text-left {
+    top: 50%;
+    left: -100%;
+    transform: translateY(-50%);
+    animation: slideLeft 1s ease-out forwards 6s;
+}
+
+.text-right {
+    top: 50%;
+    right: -100%;
+    transform: translateY(-50%);
+    animation: slideRight 1s ease-out forwards 6.5s;
+}
+
+/* Animaciones para los textos */
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes slideLeft {
+    0% {
+        opacity: 0;
+        left: -100%;
+    }
+    100% {
+        opacity: 1;
+        left: 20%;
+    }
+}
+
+@keyframes slideRight {
+    0% {
+        opacity: 0;
+        right: -100%;
+    }
+    100% {
+        opacity: 1;
+        right: 20%;
+    }
+}
+
+/* ===============================
+   Estilos Generales para la Sección 2
+   =============================== */
+
+   #section2 {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2em;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Contenedor de las nubes */
+#section2 .clouds-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* Estilo de las nubes */
+#section2 .cloud {
+    position: absolute;
+    width: 20%;
+    animation: moveClouds 10s linear infinite;
+}
+
+#section2 .cloud-left {
+    left: -25%;
+    animation: moveCloudLeft 10s linear infinite;
+}
+
+#section2 .cloud-right {
+    right: -25%;
+    animation: moveCloudRight 10s linear infinite;
+}
+
+/* Animación de las nubes moviéndose */
+@keyframes moveClouds {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100vw);
+    }
+}
+
+@keyframes moveCloudLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100vw);
+    }
+}
+
+@keyframes moveCloudRight {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100vw);
+    }
+}
+
+/* ===============================
+   Estilos de la Imagen de Adán
+   =============================== */
+
+/* Contenedor de la imagen de Adán */
+#section2 .image-adam-container {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2; /* La imagen de Adán debe estar encima de las nubes */
+    padding-top: 20px; /* Espacio entre las nubes y la imagen */
+}
+
+/* Contenedor del aura (circular) */
+#section2 .adam-aura-wrapper {
+    display: inline-block;
+    padding: 20px; /* Añadir espacio alrededor de la imagen para que el aura se vea sin recortar */
+    background: radial-gradient(circle, rgba(255, 255, 0, 0.6), rgba(255, 255, 0, 0));
+    border-radius: 50%;
+    animation: auraEffect 2s infinite alternate;
+}
+
+/* Imagen de Adán */
+#section2 .image-adam img {
+    width: 100%;
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 50%; /* Hace la imagen circular */
+}
+
+/* Animación del aura */
+@keyframes auraEffect {
+    0% {
+        box-shadow: 0 0 80px 30px rgba(255, 255, 0, 0.6); /* Aura amarillo */
+    }
+    50% {
+        box-shadow: 0 0 150px 60px rgba(255, 255, 0, 0.9); /* Aura más grande y brillante */
+    }
+    100% {
+        box-shadow: 0 0 80px 30px rgba(255, 255, 0, 0.6); /* Vuelve al tamaño original */
+    }
+}
+
+/* ===============================
+   Estilos para la Galería de Tarjetas
+   =============================== */
+
+#section2 .cards-container {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    z-index: 2; /* Asegura que las tarjetas no se tapen con las nubes */
+}
+
+/* Estilo de las tarjetas */
+#section2 .card {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+#section2 .card img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+
+#section2 .card h2 {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+/* ===============================
+   Media Queries para Dispositivos Móviles
+   =============================== */
+
+@media (max-width: 768px) {
+    /* En pantallas pequeñas, reducimos el tamaño de las nubes y mejoramos la separación */
+    #section2 .cloud-left, #section2 .cloud-right {
+        width: 35%; /* Reducimos el tamaño de las nubes para que no estén tan separadas */
+    }
+
+    #section2 .cloud-left {
+        left: -20%;
+        animation: moveCloudLeft 8s linear infinite; /* Aceleramos la animación */
+    }
+
+    #section2 .cloud-right {
+        right: -20%;
+        animation: moveCloudRight 8s linear infinite; /* Aceleramos la animación */
+    }
+
+    /* Ajustamos la imagen de Adán para que ocupe un tamaño adecuado en móviles */
+    #section2 .adam-aura-wrapper img {
+        width: 100%;
+        height: 60vh; /* Reducimos el tamaño de la imagen */
+    }
+
+    /* Ajustamos la galería de tarjetas para que sea más accesible en móviles */
+    #section2 .cards-container {
+        width: 80%;
+    }
+}
+
+
+/* ===============================
+   Media Queries para Dispositivos Móviles
+   =============================== */
+
+@media (max-width: 768px) {
+    /* En pantallas pequeñas, reducimos el tamaño de las nubes y mejoramos la separación */
+    #section2 .cloud-left, #section2 .cloud-right {
+        width: 35%; /* Reducimos el tamaño de las nubes para que no estén tan separadas */
+    }
+
+    #section2 .cloud-left {
+        left: -20%;
+        animation: moveCloudLeft 8s linear infinite; /* Aceleramos la animación */
+    }
+
+    #section2 .cloud-right {
+        right: -20%;
+        animation: moveCloudRight 8s linear infinite; /* Aceleramos la animación */
+    }
+
+    /* Ajustamos la imagen de Adán para que ocupe un tamaño adecuado en móviles */
+    #section2 .image-adam img {
+        width: 100%;
+        height: 60vh; /* Reducimos el tamaño de la imagen */
+    }
+
+    /* Ajustamos la galería de tarjetas para que sea más accesible en móviles */
+    #section2 .cards-container {
+        width: 80%;
+    }
+}
+
+
+
+
+
+/* ===============================
+   Estilos de Responsividad
+   =============================== */
+@media screen and (max-width: 768px) {
+    .text-left, .text-middle, .text-right {
+        font-size: 1em;
+        padding: 5px;
+    }
+
+    .text-left {
+        padding-right: 100px;
+    }
+
+    .text-right {
+        padding-left: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    .image-container {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .image-container {
+        flex-direction: column;
+    }
+
+    .navbar {
+        width: 100%;
+        top: 0;
+        right: 0;
+        left: 0;
+        border-radius: 0;
+    }
+}
